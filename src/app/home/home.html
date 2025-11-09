@@ -1,8 +1,0 @@
-<button (click)="toggleDetails()">Display Details</button>
-<p *ngIf="isVisible">Secret Password = Tuna</p>
-<button (click)="createLog()">Create Logs</button>
-
-<p *ngFor="let list of logsArr" [ngClass]="{'future-bg': list >= 5}">
-
-        Log number: {{ list }}
-</p>

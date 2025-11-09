@@ -1,13 +1,19 @@
-import { Component, signal } from '@angular/core';
-import { Home } from './home/home';
+import { Component, OnInit, signal } from '@angular/core';
+import { Todo } from './todo/todo';
+import { PrimeNG } from 'primeng/config';
 
 
 @Component({
   selector: 'app-root',
-  imports: [Home],
+  imports: [Todo],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('Hello World');
+export class App implements OnInit {
+
+    constructor(private primeng: PrimeNG) {}
+
+    ngOnInit() {
+        this.primeng.ripple.set(true);
+    }
 }

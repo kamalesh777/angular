@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
@@ -12,27 +12,27 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class TodoForm {
 
-    exampleForm: FormGroup;
+    todoForm: FormGroup;
 
     formSubmitted = false;
 
     constructor(private fb: FormBuilder) {
-        this.exampleForm = this.fb.group({
-            username: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]]
+        this.todoForm = this.fb.group({
+            name: ['', Validators.required],
         });
     }
 
     onSubmit() {
         this.formSubmitted = true;
-        if (this.exampleForm.valid) {
-            this.exampleForm.reset();
+        if (this.todoForm.valid) {
+
+            this.todoForm.reset();
             this.formSubmitted = false;
         }
     }
 
     isInvalid(controlName: string) {
-        const control = this.exampleForm.get(controlName);
+        const control = this.todoForm.get(controlName);
         return control?.invalid && (control.touched || this.formSubmitted);
     }
 }

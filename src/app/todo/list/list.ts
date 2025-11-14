@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CardModule } from 'primeng/card';
 
 @Component({
-  selector: 'app-list',
-  imports: [],
+  selector: 'app-todo-list',
+  imports: [CardModule],
   templateUrl: './list.html',
   styleUrl: './list.css',
 })
-export class List {
+
+export class TodoList implements OnInit {
+
+  elements = [
+    {
+      name: 'hello Kamlesh',
+      content: 'no content'
+    }
+  ]
+
+  constructor() {
+
+  }
+
+  ngOnInit() {}
 
 }

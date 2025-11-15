@@ -2,6 +2,7 @@
 <div class="container bg-sky-500 min-h-screen p-4">
 <app-todo-form></app-todo-form>
 <div class="mt-20">
-    <app-todo-list></app-todo-list>
+    <app-todo-list *ngFor="let blogPost of blogsArr" [listElement]="blogPost">
+    </app-todo-list>
 </div>
 </div>

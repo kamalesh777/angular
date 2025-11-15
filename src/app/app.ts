@@ -11,6 +11,7 @@ import { PrimeNG } from 'primeng/config';
 })
 export class App implements OnInit {
 
+
     constructor(private primeng: PrimeNG) {}
 
     ngOnInit() {

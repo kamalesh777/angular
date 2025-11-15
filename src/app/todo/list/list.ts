@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 
+export interface BlogPostTypes {
+  name: string;
+  description: string;
+}
 @Component({
   selector: 'app-todo-list',
   imports: [CardModule],
@@ -9,13 +13,7 @@ import { CardModule } from 'primeng/card';
 })
 
 export class TodoList implements OnInit {
-
-  elements = [
-    {
-      name: 'hello Kamlesh',
-      content: 'no content'
-    }
-  ]
+  @Input() listElement!: BlogPostTypes
 
   constructor() {
 

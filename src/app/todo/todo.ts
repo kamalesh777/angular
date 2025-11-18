@@ -26,4 +26,9 @@ export class Todo {
         description: 'Post found for december'
       }
     ]
+
+    handleData(event: { name: string; description: string }) {
+      const result = [event, ...this.blogsArr];
+        this.blogsArr = result;
+    }
 }

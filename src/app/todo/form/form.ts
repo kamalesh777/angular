@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, EventEmitter, inject, Output, output } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form.css',
 })
 export class TodoForm {
-
+    @Output() postCreated = new EventEmitter< { name: string; description: string } >();
     todoForm: FormGroup;
 
     formSubmitted = false;
@@ -19,16 +19,16 @@ export class TodoForm {
     constructor(private fb: FormBuilder) {
         this.todoForm = this.fb.group({
             name: ['', Validators.required],
+            description: ['', Validators.required],
         });
     }
 
     onSubmit() {
         this.formSubmitted = true;
-        if (this.todoForm.valid) {
-
-            this.todoForm.reset();
-            this.formSubmitted = false;
+        if (this.todoForm.invalid) {
+            return;
         }
+        this.postCreated.emit(this.todoForm.value);
     }
 
     isInvalid(controlName: string) {
